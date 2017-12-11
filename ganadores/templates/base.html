@@ -1,0 +1,404 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        {% load static %}
+        <!-- Bootstrap Core CSS -->
+        <link href="{% static 'ganadores/css/bootstrap.min.css' %}" rel="stylesheet">
+
+        <!--Nifty Stylesheet [ REQUIRED ]-->
+        <link href="{% static 'ganadores/css/nifty.min.css' %}" rel="stylesheet">
+
+        <link href="{% static 'ganadores/css/style.css' %}" rel="stylesheet">
+
+
+        <!--Premium Icons [ OPTIONAL ]-->
+        <link href="{% static 'ganadores/icons/line-icons/premium-line-icons.min.css' %}" rel="stylesheet">
+        <link href="{% static 'ganadores/icons/solid-icons/premium-solid-icons.min.css' %}" rel="stylesheet">
+
+
+
+        <!-- Custom CSS for admin page-->
+        <!-- <link href="{% static 'places/css/style.css' %}" rel="stylesheet"> -->
+        <!-- <link href="{% static 'places/css/sb-admin.css' %}" rel="stylesheet"> -->
+
+        <!-- Morris Charts CSS -->
+        <!-- <link href="{% static 'places/css/plugins/morris.css' %}" rel="stylesheet"> -->
+
+        <!-- Custom Fonts -->
+        <!-- <link href="{% static 'places/font-awesome/css/font-awesome.min.css' %}   " rel="stylesheet" type="text/css"> -->
+        <!--Open Sans Font [ OPTIONAL ] -->
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin" rel="stylesheet">
+
+
+        <!--Page Load Progress Bar [ OPTIONAL ]-->
+        <link href="{% static 'ganadores/css/pace.min.css' %}" rel="stylesheet">
+        <script src="{% static 'ganadores/js/pace.min.js' %}"></script>
+
+
+
+        <!-- jQuery -->
+        <script src="{% static 'ganadores/js/jquery.min.js' %}  "></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="{% static 'ganadores/js/bootstrap.min.js' %}  "></script>
+
+        <!--Nifty Admin [ RECOMMENDED ]-->
+        <script src="{% static 'ganadores/js/nifty.min.js' %}  "></script>
+
+        <title>Casos | {% block title %}{% endblock %}</title>
+
+
+
+
+    </head>
+    <body class="pace-done">
+
+    <!--CONTAINER-->
+    {% if request.user.is_authenticated %}
+    <div id="container" class="effect mainnav-lg">
+    {% else %}
+    <div id="container">
+    {% endif %}
+
+
+    <!--NAVBAR-->
+    <!--===================================================-->
+    <header id="navbar">
+        <div id="navbar-container" class="boxed">
+
+            <!--Brand logo & name-->
+            <!--================================-->
+
+
+            <div class="navbar-header">
+                <a href="{% url 'home'  %}" class="navbar-brand">
+                        <img src="{% static 'ganadores/img/logo.png' %}" alt="Pepsi" class="brand-icon">
+                        <div class="brand-title">
+                            <span class="brand-text">Pepsi</span>
+                        </div>
+                    </a>
+            </div>
+            <!--================================-->
+            <!--End brand logo & name-->
+
+
+            <!--Navbar Dropdown-->
+            <!--================================-->
+            <div class="navbar-content clearfix">
+                {% if request.user.is_authenticated %}
+                <ul class="nav navbar-top-links pull-left">
+
+
+                    <!--Navigation toogle button-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <li class="tgl-menu-btn">
+                        <a class="mainnav-toggle" href="#">
+                            <i class="pli-view-list icon-lg"></i>
+                        </a>
+                    </li>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End Navigation toogle button-->
+
+
+
+
+
+
+
+
+                    {% endif %}
+                </ul>
+                <ul class="nav navbar-top-links pull-right">
+
+                    {% if request.user.is_authenticated %}
+                    <!--User dropdown-->
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <li id="dropdown-user" class="dropdown">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                            <span class="ic-user pull-right">
+                                <!-- You may use image instead of an icon.
+                                <!--<img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture">-->
+                                <i class="pli-male"></i>
+                            </span>
+                            <div class="username hidden-xs">{{ request.user.username }}</div>
+                        </a>
+
+
+                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-right panel-default">
+
+
+
+                            <!-- Dropdown footer -->
+                            <div class="pad-all ">
+
+                            </div>
+                        </div>
+                    </li>
+                    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                    <!--End user dropdown-->
+                    {% endif %}
+
+                    <!-- <li>
+                        <a href="#" class="aside-toggle navbar-aside-icon">
+                            <i class="pci-ver-dots"></i>
+                        </a>
+                    </li> -->
+                </ul>
+            </div>
+            <!--================================-->
+            <!--End Navbar Dropdown-->
+
+        </div>
+    </header>
+    <!--===================================================-->
+    <!--END NAVBAR-->
+
+
+    <div class="boxed">
+        <!--CONTENT CONTAINER-->
+        <!--===================================================-->
+        <div id="content-container">
+
+            <!-- Page Heading -->
+                <div id="page-title">
+                    <h1 class="page-header text-overflow">
+                        {% block head %}{% endblock %} <small>{% block head_subtitle %}{% endblock %}</small>
+                    </h1>
+
+                    {% block breadcrumb %}
+                    {% endblock %}
+
+
+                </div>
+            <!-- /.row -->
+
+
+            <!--Page content-->
+            <!--===================================================-->
+            <div id="page-content">
+
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-10 ">
+
+
+
+                            {% block content %}{% endblock %}
+
+                    </div>
+                </div>
+                <!-- /.row -->
+
+
+
+            </div>
+            <!--===================================================-->
+            <!--End page content-->
+
+
+        </div>
+        <!--===================================================-->
+        <!--END CONTENT CONTAINER-->
+
+
+    </div>
+    <!--===================================================-->
+    <!-- END OF CONTAINER -->
+
+    {% if request.user.is_authenticated %}
+    <!--MAIN NAVIGATION-->
+            <!--===================================================-->
+            <nav id="mainnav-container">
+                <div id="mainnav">
+
+                    <!--Menu-->
+                    <!--================================-->
+                    <div id="mainnav-menu-wrap">
+                        <div class="nano">
+                            <div class="nano-content">
+
+                                <!--Profile Widget-->
+                                <!--================================-->
+                                <div id="mainnav-profile" class="mainnav-profile">
+                                    <div class="profile-wrap text-center">
+                                        <div class="pad-btm">
+                                            <div class="icon-wrap icon-wrap-sm icon-circle bg-trans-dark">
+                                                <i class="psi-male"></i>
+                                                </div>
+                                        </div>
+                                        <a href="#profile-nav" class="box-block" data-toggle="collapse" aria-expanded="false">
+                                            <span class="pull-right dropdown-toggle">
+                                                <i class="dropdown-caret"></i>
+                                            </span>
+                                            <p class="mnp-name">{{request.user.username}}</p>
+                                            <span class="mnp-desc">{{request.user.email}}</span>
+                                        </a>
+                                    </div>
+                                    <div id="profile-nav" class="collapse list-group bg-trans">
+
+
+                                    </div>
+                                </div>
+
+
+
+
+                                <ul id="mainnav-menu" class="list-group">
+
+						            <!--Category name-->
+						            <li class="list-header">Menu Principal</li>
+                                        <a href="{% url 'home' %}">
+						                    <i class="psi-gear"></i>
+						                    <span class="menu-title">Mis Vehículos</span>
+						                </a>
+						            <!--Menu list item-->
+						            <li class="active-link">
+
+
+						            </li>
+
+                                    <li>
+						            </li>
+
+
+						            <!--Category name-->
+
+						            <li class="list-divider"></li>
+
+
+                                </ul>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--================================-->
+                    <!--End menu-->
+
+                </div>
+            </nav>
+            <!--===================================================-->
+            <!--END MAIN NAVIGATION-->
+        {% endif %}
+
+        <!--ASIDE-->
+            <!--===================================================-->
+            <aside id="aside-container">
+                <div id="aside">
+                    <div class="nano">
+                        <div class="nano-content">
+
+                            <!--Nav tabs-->
+                            <!--================================-->
+                            <ul class="nav nav-tabs nav-justified">
+                                <li class="active">
+                                    <a href="#demo-asd-tab-1" data-toggle="tab">
+                                        <i class="pli-speech-bubble-7"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#demo-asd-tab-2" data-toggle="tab">
+                                        <i class="pli-information"></i>
+                                        Reports
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#demo-asd-tab-3" data-toggle="tab">
+                                        <i class="pli-wrench"></i>
+                                        Settings
+                                    </a>
+                                </li>
+                            </ul>
+                            <!--================================-->
+                            <!--End nav tabs-->
+
+
+
+                            <!-- Tabs Content -->
+                            <!--================================-->
+                            <div class="tab-content">
+
+                                <!--First tab-->
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <div class="tab-pane fade in active" id="demo-asd-tab-1">
+                                    <p class="pad-all text-lg">First tab</p>
+                                    <div class="pad-hor">
+                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                                        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+                                        ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate
+                                        velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
+                                        et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                                    </div>
+                                </div>
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <!--End first tab-->
+
+
+                                <!--Second tab-->
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <div class="tab-pane fade" id="demo-asd-tab-2">
+                                    <p class="pad-all text-lg">Second tab</p>
+                                    <div class="pad-hor">
+                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                                        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+                                        ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate
+                                        velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
+                                        et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                                    </div>
+                                </div>
+                                <!--End second tab-->
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+
+                                <!--Third tab-->
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                                <div class="tab-pane fade" id="demo-asd-tab-3">
+                                    <p class="pad-all text-lg">Third tab</p>
+                                    <div class="pad-hor">
+                                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit,
+                                        sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                                        Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl
+                                        ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate
+                                        velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan
+                                        et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
+                                    </div>
+                                </div>
+                                <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+            <!--===================================================-->
+            <!--END ASIDE-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>
