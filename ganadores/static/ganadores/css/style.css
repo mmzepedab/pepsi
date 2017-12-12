@@ -1,5 +1,9 @@
 body {
-  background-color: #eee;
+  background: url(../img/pepsibg.jpg);
+  background-repeat: no-repeat;
+  margin: 0px;
+  background-size: 100%;
+  background-color: #013791;
 }
 
 .form-signin {
@@ -43,5 +47,12 @@ body {
 
 .brand-icon{
     width: 200px!important;
+}
+
+#content-container {
+    position: relative;
+    padding-top: 55px;
+    padding-bottom: 80px;
+    background-color: transparent;
 }
 
